@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/DataDog/datadog-go/statsd"
+	"github.com/StackVista/stackstate-go/statsd"
 	"github.com/stretchr/testify/assert"
 )
 

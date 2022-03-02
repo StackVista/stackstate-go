@@ -58,7 +58,7 @@ const DefaultUDSBufferPoolSize = 512
 /*
 DefaultMaxAgentPayloadSize is the default maximum payload size the agent
 can receive. This can be adjusted by changing dogstatsd_buffer_size in the
-agent configuration file datadog.yaml.
+agent configuration file stackstate.yaml.
 */
 const DefaultMaxAgentPayloadSize = 8192
 
@@ -357,18 +357,18 @@ func (c *Client) telemetry() {
 		select {
 		case <-ticker.C:
 			clientMetrics := c.flushMetrics()
-			c.telemetryCount("datadog.dogstatsd.client.metrics", int64(clientMetrics.TotalMetrics), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.events", int64(clientMetrics.TotalEvents), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.service_checks", int64(clientMetrics.TotalServiceChecks), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.metrics", int64(clientMetrics.TotalMetrics), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.events", int64(clientMetrics.TotalEvents), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.service_checks", int64(clientMetrics.TotalServiceChecks), c.telemetryTags, 1)
 			senderMetrics := c.sender.flushMetrics()
-			c.telemetryCount("datadog.dogstatsd.client.packets_sent", int64(senderMetrics.TotalSentPayloads), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.bytes_sent", int64(senderMetrics.TotalSentBytes), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.packets_dropped", int64(senderMetrics.TotalDroppedPayloads), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.bytes_dropped", int64(senderMetrics.TotalDroppedBytes), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.packets_dropped_queue", int64(senderMetrics.TotalDroppedPayloadsQueueFull), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.bytes_dropped_queue", int64(senderMetrics.TotalDroppedBytesQueueFull), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.packets_dropped_writer", int64(senderMetrics.TotalDroppedPayloadsWriter), c.telemetryTags, 1)
-			c.telemetryCount("datadog.dogstatsd.client.bytes_dropped_writer", int64(senderMetrics.TotalDroppedBytesWriter), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.packets_sent", int64(senderMetrics.TotalSentPayloads), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.bytes_sent", int64(senderMetrics.TotalSentBytes), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.packets_dropped", int64(senderMetrics.TotalDroppedPayloads), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.bytes_dropped", int64(senderMetrics.TotalDroppedBytes), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.packets_dropped_queue", int64(senderMetrics.TotalDroppedPayloadsQueueFull), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.bytes_dropped_queue", int64(senderMetrics.TotalDroppedBytesQueueFull), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.packets_dropped_writer", int64(senderMetrics.TotalDroppedPayloadsWriter), c.telemetryTags, 1)
+			c.telemetryCount("stackstate.dogstatsd.client.bytes_dropped_writer", int64(senderMetrics.TotalDroppedBytesWriter), c.telemetryTags, 1)
 		case <-c.stop:
 			ticker.Stop()
 			return

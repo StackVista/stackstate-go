@@ -23,7 +23,7 @@ func TestDefaultOptions(t *testing.T) {
 }
 
 func TestOptions(t *testing.T) {
-	testNamespace := "datadog."
+	testNamespace := "stackstate."
 	testTags := []string{"rocks"}
 	testMaxBytesPerPayload := 2048
 	testMaxMessagePerPayload := 1024

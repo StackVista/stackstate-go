@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/DataDog/datadog-go/statsd"
+	"github.com/StackVista/stackstate-go/statsd"
 )
 
 func setupUDSClientServer(b *testing.B) (*statsd.Client, net.Listener) {
